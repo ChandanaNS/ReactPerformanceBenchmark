@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>Todo list</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <link rel="stylesheet" href="style.css" />
+    <link
+      rel="stylesheet"
+      href="https://use.fontawesome.com/releases/v5.7.2/css/all.css"
+      integrity="sha384-fnmOCqbTlWIlj8LyTjo7mOUStjsKC4pOpQbqyi7RrhN7udi9RwhKkMHpvLbHG9Sr"
+      crossorigin="anonymous"
+    />
+    <link
+      href="https://fonts.googleapis.com/css?family=Roboto:100,300,400"
+      rel="stylesheet"
+    />
+  </head>
+
+  <body class="body">
+    <div id="wrapper">
+      <h1 class="heading">Todo List</h1>
+      <form
+        class="container"
+        onkeydown="if (event.keyCode == 13) { todoList.addTodos(event); return false; }"
+      >
+        <input
+          type="text"
+          id="textInput"
+          placeholder="What needs to be done today?"
+        />
+      </form>
+      <ul id="list-group"></ul>
+      <p id="todosToday"></p>
+      <script src="script.js"></script>
+    </div>
+  </body>
+</html>
