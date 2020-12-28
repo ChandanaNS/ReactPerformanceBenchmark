@@ -1,18 +1,5 @@
 var todoList = {
-  todos: [
-    {
-      todoText: "JSTodo",
-      completed: false,
-    },
-    {
-      todoText: "Coding",
-      completed: true,
-    },
-    {
-      todoText: "Performance Check",
-      completed: false,
-    },
-  ],
+  todos: ListData,
   addTodos(event) {
     // press enter to create a new todo
     var addTodoStart = performance.now();
@@ -21,9 +8,10 @@ var todoList = {
       if (addTodoTextInput.value === "") {
         alert("Please add in a todo!");
       } else {
-        this.todos.push({
-          todoText: addTodoTextInput.value,
-          completed: false,
+        this.todos.unshift({
+          index: this.todos.length + 1,
+          value: addTodoTextInput.value,
+          done: false,
         });
       }
       // Reseting to empty string after user input
@@ -58,7 +46,7 @@ var todoList = {
 
   toggleCompleted(position) {
     var toggleCompletedStart = performance.now();
-    this.todos[position].completed = !this.todos[position].completed;
+    this.todos[position].done = !this.todos[position].done;
     view.displayTodos();
     var toggleCompletedEnd = performance.now();
     console.log(
@@ -75,17 +63,17 @@ var todoList = {
 
     this.todos.forEach(function (todo) {
       // === true shorthand
-      if (todo.completed) {
+      if (todo.done) {
         completedTodos++;
       }
     });
     // if everything is true make it false: toggles all completed to all uncompleted
     this.todos.forEach(function (todo) {
       if (totalTodos === completedTodos) {
-        todo.completed = false;
+        todo.done = false;
         // otherwise make everything true: if some completed toggles all to completed
       } else {
-        todo.completed = true;
+        todo.done = true;
       }
     });
     view.displayTodos();
@@ -109,7 +97,7 @@ view = {
       todoTextInput.id = "todoTextInput";
       todoTextInput.disabled = true;
       todoTextInput.readOnly = true;
-      if (todo.completed) {
+      if (todo.done) {
         todoLi.innerHTML = '<i class="fas fa-check-circle" "circle"></i>';
         todoLi.className = "toggle list-group-item done";
         todoLi.appendChild(todoTextInput);
@@ -129,7 +117,7 @@ view = {
         todoLi.appendChild(todoTextInput);
         todoUl.appendChild(todoLi);
       }
-      todoTextInput.value = todo.todoText;
+      todoTextInput.value = todo.value;
       todoLi.appendChild(view.createDeleteButton());
       view.todosToday();
     });
@@ -138,7 +126,7 @@ view = {
     // count how many completed todos there are
     completedTodos = 0;
     todoList.todos.forEach(function (todo) {
-      if (todo.completed === false) {
+      if (todo.done === false) {
         completedTodos++;
       }
     });
@@ -161,11 +149,12 @@ view = {
   eventListeners() {
     // Onload event listener
     var t2 = performance.now();
-    const loadList = document.addEventListener("DOMContentLoaded", function (
-      event
-    ) {
-      view.displayTodos();
-    });
+    const loadList = document.addEventListener(
+      "DOMContentLoaded",
+      function (event) {
+        view.displayTodos();
+      }
+    );
     var t3 = performance.now();
     console.log(
       "EventListerner::: DOMContentLoaded :: " + (t3 - t2) + " milliseconds."

@@ -36,6 +36,8 @@ h1 {
     0 10px 1px -4px rgba(0, 0, 0, 0.15), 0 20px 0 -10px #eee,
     0 20px 1px -9px rgba(0, 0, 0, 0.15);
   padding-inline-start: 0;
+  height: 60vh;
+  overflow-y: auto;
 }
 
 #list-group li {
