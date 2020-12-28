@@ -8,24 +8,22 @@ body {
   background: #2d2d2d;
   display: flex;
   justify-content: center;
+  font-family: "Roboto", sans-serif;
 }
 
 h1 {
   margin: 20px 0 15px 0;
 }
 
-#wrapper {
+/* #wrapper {
   width: 600px;
   margin: 0 auto;
   text-align: left;
-}
+} */
 
 /* heading */
 .heading {
-  font-family: "Roboto", sans-serif;
-  /* font-weight: lighter; */
   text-align: center;
-  /* font-size: 23px; */
 }
 /* TO DO BOX */
 .container {
@@ -33,7 +31,7 @@ h1 {
   flex-direction: column;
 }
 
-.list-group {
+.list {
   border: 1px solid lightgrey;
   background: #fff;
   box-shadow: 0 1px 1px rgba(0, 0, 0, 0.15), 0 10px 0 -5px #eee,
@@ -41,8 +39,10 @@ h1 {
     0 20px 1px -9px rgba(0, 0, 0, 0.15);
   padding-inline-start: 0;
 }
-
-.list-group li {
+.ReactVirtualized__List {
+  height: 500px !important;
+}
+.content {
   font-family: "Roboto", sans-serif;
   /* padding: 1vw 0 0.5vw 0vw; */
   list-style: none;
@@ -50,6 +50,7 @@ h1 {
   /* display: flex; */
   align-items: center;
   justify-content: space-between;
+  padding: 15px;
 }
 .circle {
   padding-right: 10px;
@@ -61,6 +62,10 @@ ul {
 
 ul > li:hover {
   background-color: #f5f5f5;
+}
+
+.row {
+  margin-left: 0px;
 }
 
 .done {
@@ -75,4 +80,10 @@ ul > li:hover {
 
 .icon {
   margin: 6px 10px 6px 0;
+}
+@media only screen and (max-width: 600px) {
+  .ReactVirtualized__List {
+    height: 500px !important;
+    width: auto !important;
+  }
 }
