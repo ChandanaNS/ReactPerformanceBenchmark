@@ -114,3 +114,9 @@ input {
   background-color: white;
   width: 10%;
 }
+
+@media only screen and (max-width: 600px) {
+  #wrapper {
+    width: auto !important;
+  }
+}
