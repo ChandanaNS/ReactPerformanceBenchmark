@@ -40,7 +40,7 @@ h1 {
   padding-inline-start: 0;
 }
 .ReactVirtualized__List {
-  height: 500px !important;
+  height: 60vh !important;
 }
 .content {
   font-family: "Roboto", sans-serif;
@@ -83,7 +83,6 @@ ul > li:hover {
 }
 @media only screen and (max-width: 600px) {
   .ReactVirtualized__List {
-    height: 500px !important;
     width: auto !important;
   }
 }

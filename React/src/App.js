@@ -1,13 +1,9 @@
 import React, { Component } from "react";
 import "./App.css";
-
-import loremIpsum from "lorem-ipsum";
-
 import { List } from "react-virtualized";
-
 import { ListData } from "./constants/ListItems";
 
-const rowCount = 1000;
+// const rowCount = 1000;
 const listHeight = 600;
 const rowHeight = 50;
 const rowWidth = 800;
@@ -100,11 +96,11 @@ class TodoListItem extends Component {
   }
   onClickClose = (e) => {
     console.log("Remove task ", e.target.offsetParent.id);
-    var index = parseInt(e.target.offsetParent.id);
+    var index = parseInt(e.target.offsetParent.id, 10);
     this.props.removeItem(index);
   };
   onClickDone = (e) => {
-    var index = parseInt(e.target.offsetParent.id);
+    var index = parseInt(e.target.offsetParent.id, 10);
     this.props.markTodoDone(index);
   };
   render() {
