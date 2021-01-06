@@ -27,7 +27,6 @@ class TodoForm extends Component {
   };
 
   onSubmit(event) {
-    console.log(event);
     event.preventDefault();
     var inputValue = this.state.inputValue;
 
@@ -95,7 +94,6 @@ class TodoListItem extends Component {
     );
   }
   onClickClose = (e) => {
-    console.log("Remove task ", e.target.offsetParent.id);
     var index = parseInt(e.target.offsetParent.id, 10);
     this.props.removeItem(index);
   };
@@ -152,12 +150,16 @@ class App extends Component {
     this.setState({ todoItems: this.state.todoItems });
   }
   markTodoDone(itemIndex) {
-    var todo = this.state.todoItems[itemIndex];
-    this.state.todoItems.splice(itemIndex, 1);
-    todo.status = !todo.status;
-    todo.status
-      ? this.state.todoItems.push(todo)
-      : this.state.todoItems.unshift(todo);
+    // var todo = this.state.todoItems[itemIndex];
+    // this.state.todoItems.splice(itemIndex, 1);
+    // todo.status = !todo.status;
+    // todo.status
+    //   ? this.state.todoItems.push(todo)
+    //   : this.state.todoItems.unshift(todo);
+    // this.setState({ todoItems: this.state.todoItems });
+
+    this.state.todoItems[itemIndex].status = !this.state.todoItems[itemIndex]
+      .status;
     this.setState({ todoItems: this.state.todoItems });
   }
 

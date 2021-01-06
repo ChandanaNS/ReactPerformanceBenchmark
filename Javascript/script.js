@@ -189,30 +189,30 @@ view = {
       "EventListerner::: Click:: Toggle row :: " + (t7 - t6) + " milliseconds."
     );
 
-    // click to edit and enter to save
-    var t6 = performance.now();
-    const todoUl = document.querySelector("ul");
-    todoUl.addEventListener("click", function (event) {
-      const position = event.target.parentNode.id;
-      if (event.target.tagName === "INPUT") {
-        const input = document.getElementById(position).querySelector("input");
-        input.disabled = false;
-        input.className = "activeTextInput";
-        input.focus();
-        input.select();
+    // // click to edit and enter to save
+    // var t6 = performance.now();
+    // const todoUl = document.querySelector("ul");
+    // todoUl.addEventListener("click", function (event) {
+    //   const position = event.target.parentNode.id;
+    //   if (event.target.tagName === "INPUT") {
+    //     const input = document.getElementById(position).querySelector("input");
+    //     input.disabled = false;
+    //     input.className = "activeTextInput";
+    //     input.focus();
+    //     input.select();
 
-        input.addEventListener("blur", function () {
-          const newTodo = input.value;
-          input.disabled = true;
-          input.classList.remove("activeTextInput");
-          todoList.changeTodos(position, newTodo);
-        });
-      }
-    });
-    var t7 = performance.now();
-    console.log(
-      "EventListerner::: Edit and save::" + (t7 - t6) + " milliseconds."
-    );
+    //     input.addEventListener("blur", function () {
+    //       const newTodo = input.value;
+    //       input.disabled = true;
+    //       input.classList.remove("activeTextInput");
+    //       todoList.changeTodos(position, newTodo);
+    //     });
+    //   }
+    // });
+    // var t7 = performance.now();
+    // console.log(
+    //   "EventListerner::: Edit and save::" + (t7 - t6) + " milliseconds."
+    // );
   },
 };
 
