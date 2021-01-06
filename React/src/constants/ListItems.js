@@ -10,7 +10,7 @@ function generateRandomJSON(items) {
   return result;
 }
 var dummyData = generateRandomJSON(1000);
-let ListData = [
+let ListDataStatic = [
   { index: 1, value: "learn react", done: true },
   { index: 2, value: "Revise Literature review", done: false },
   { index: 3, value: "Send mail", done: false },
@@ -46,4 +46,4 @@ let ListData = [
   { index: 33, value: "task", done: true },
   { index: 34, value: "task", done: true },
 ];
-ListData = ListData.concat(dummyData);
+export let ListData = ListDataStatic.concat(dummyData);
