@@ -3,10 +3,9 @@ import "./App.css";
 import { List } from "react-virtualized";
 import { ListData } from "./constants/ListItems";
 
-// const rowCount = 1000;
-const listHeight = 600;
-const rowHeight = 50;
-const rowWidth = 800;
+const listHeight = 600,
+  rowHeight = 50,
+  rowWidth = 800;
 
 class TodoHeader extends Component {
   render() {
@@ -29,9 +28,11 @@ class TodoForm extends Component {
   onSubmit(event) {
     event.preventDefault();
     var inputValue = this.state.inputValue;
-
     if (inputValue) {
       this.props.addItem(inputValue);
+      this.setState({
+        inputValue: "",
+      });
     }
   }
   handleChange = (e) => {
@@ -55,7 +56,6 @@ class TodoForm extends Component {
     );
   }
 }
-
 class TodoListItem extends Component {
   constructor(props) {
     super(props);
@@ -64,7 +64,8 @@ class TodoListItem extends Component {
     this.onClickDone = this.onClickDone.bind(this);
     this.renderRow = this.renderRow.bind(this);
   }
-  componentWillReceiveProps() {
+
+  UNSAFE_componentWillReceiveProps() {
     this.refs.forceUpdateGrid();
   }
   renderRow({ index, key, style }) {
@@ -119,7 +120,6 @@ class TodoListItem extends Component {
     );
   }
 }
-
 class App extends Component {
   constructor() {
     super();
@@ -150,17 +150,11 @@ class App extends Component {
     this.setState({ todoItems: this.state.todoItems });
   }
   markTodoDone(itemIndex) {
-    // var todo = this.state.todoItems[itemIndex];
-    // this.state.todoItems.splice(itemIndex, 1);
-    // todo.status = !todo.status;
-    // todo.status
-    //   ? this.state.todoItems.push(todo)
-    //   : this.state.todoItems.unshift(todo);
-    // this.setState({ todoItems: this.state.todoItems });
-
-    this.state.todoItems[itemIndex].status = !this.state.todoItems[itemIndex]
-      .status;
-    this.setState({ todoItems: this.state.todoItems });
+    let items = [...this.state.todoItems],
+      item = { ...items[itemIndex] };
+    item.status = !this.state.todoItems[itemIndex].status;
+    items[itemIndex] = item;
+    this.setState({ todoItems: items });
   }
 
   render() {

@@ -25,15 +25,7 @@ var todoList = {
         " milliseconds."
     );
   },
-  // changeTodos(position, newTodo) {
-  //   var changeTodoStart = performance.now();
-  //   this.todos[position].todoText = newTodo;
-  //   view.displayTodos();
-  //   var changeTodoEnd = performance.now();
-  //   console.log(
-  //     "changeTodos::: " + (changeTodoEnd - changeTodoStart) + " milliseconds."
-  //   );
-  // },
+
   deleteTodos(position) {
     var deleteTodoStart = performance.now();
     this.todos.splice(position, 1);
@@ -188,31 +180,6 @@ view = {
     console.log(
       "EventListerner::: Click:: Toggle row :: " + (t7 - t6) + " milliseconds."
     );
-
-    // // click to edit and enter to save
-    // var t6 = performance.now();
-    // const todoUl = document.querySelector("ul");
-    // todoUl.addEventListener("click", function (event) {
-    //   const position = event.target.parentNode.id;
-    //   if (event.target.tagName === "INPUT") {
-    //     const input = document.getElementById(position).querySelector("input");
-    //     input.disabled = false;
-    //     input.className = "activeTextInput";
-    //     input.focus();
-    //     input.select();
-
-    //     input.addEventListener("blur", function () {
-    //       const newTodo = input.value;
-    //       input.disabled = true;
-    //       input.classList.remove("activeTextInput");
-    //       todoList.changeTodos(position, newTodo);
-    //     });
-    //   }
-    // });
-    // var t7 = performance.now();
-    // console.log(
-    //   "EventListerner::: Edit and save::" + (t7 - t6) + " milliseconds."
-    // );
   },
 };
 
