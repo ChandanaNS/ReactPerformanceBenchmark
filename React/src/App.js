@@ -2,7 +2,16 @@ import React, { Component } from "react";
 import "./App.css";
 import { List } from "react-virtualized";
 import { ListData } from "./constants/ListItems";
-
+/*
+**
+Todo app structure
+**
+TodoApp
+  - TodoHeader
+  - TodoForm
+	- TodoListItem
+    -List
+*/
 const listHeight = 600,
   rowHeight = 50,
   rowWidth = 800;
@@ -64,10 +73,11 @@ class TodoListItem extends Component {
     this.onClickDone = this.onClickDone.bind(this);
     this.renderRow = this.renderRow.bind(this);
   }
-
+  // Updates the list after status change
   UNSAFE_componentWillReceiveProps() {
     this.refs.forceUpdateGrid();
   }
+  // RENDERS each list item to the List component based on the viewport
   renderRow({ index, key, style }) {
     var todoClass = this.props.todoItems[index].status ? "done " : "undone",
       doneLineClass = this.props.todoItems[index].status
@@ -137,6 +147,7 @@ class App extends Component {
     };
   }
 
+  // adding new list, triggered from TodoListItem component
   addItem(todoItem) {
     this.state.todoItems.unshift({
       id: this.state.todoItems.length + 1,
@@ -145,11 +156,15 @@ class App extends Component {
     });
     this.setState({ todoItems: this.state.todoItems });
   }
+  // deleting item from a list, triggered from TodoListItem component
   removeItem(itemIndex) {
     this.state.todoItems.splice(itemIndex, 1);
     this.setState({ todoItems: this.state.todoItems });
   }
+
+  // Changing the status that is marking done/undone, triggered from TodoListItem component
   markTodoDone(itemIndex) {
+    // shallow copy
     let items = [...this.state.todoItems],
       item = { ...items[itemIndex] };
     item.status = !this.state.todoItems[itemIndex].status;

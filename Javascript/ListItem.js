@@ -9,6 +9,7 @@ function generateRandomJSON(items) {
   }
   return result;
 }
+// generating dummy list of 1ok items
 var dummyData = generateRandomJSON(10000);
 let ListData = [
   { index: 1, value: "learn react", done: true },

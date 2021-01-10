@@ -9,7 +9,9 @@ function generateRandomJSON(items) {
   }
   return result;
 }
+// generating dummy list of 1ok items
 var dummyData = generateRandomJSON(10000);
+
 let ListDataStatic = [
   { index: 1, value: "learn react", done: true },
   { index: 2, value: "Revise Literature review", done: false },
